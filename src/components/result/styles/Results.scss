@@ -1,0 +1,43 @@
+
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+.search-results {
+  @extend .media-list;
+}
+
+.search-result {
+  @extend .media;
+
+  margin-top: 15px;
+  padding: 15px;
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 3px;
+  background-color: white;
+  box-shadow: 0 1px 4px rgba(0,0,0,.06);
+
+  .search-result__title {
+    @extend .media-heading;
+    font-size: 19px;
+
+    margin-bottom: 7px;
+  }
+
+  .search-result__meta {
+    @extend .list-inline;
+
+    margin-bottom: 5px;
+  }
+
+  .search-result__url {
+    @extend .text-muted;
+
+    margin-bottom: 5px;
+  }
+
+  .search-result__excerpt {
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
