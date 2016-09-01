@@ -1,11 +1,12 @@
 import React from 'react';
-import * as _ from "lodash";
 import sanitizeHtml from 'sanitize-html-react';
 import truncate from 'truncate';
+import moment from 'moment';
 
-export function crukPlainText(str) {
-
-}
+/**
+ * Import result styling.
+ */
+import './../styles/result.scss';
 
 /**
  * Export our result component.
@@ -22,10 +23,10 @@ export default class CRUKSearchResult extends React.Component {
 
     this.state = {
       url: result['field_url:url'],
-      title: truncate(sanitizeHtml(result['field_type'], sO), 80),
+      title: truncate(sanitizeHtml(result['title'], sO), 80),
       description: truncate(sanitizeHtml(result['body:value'], sO), 160),
       type: sanitizeHtml(result['field_type'], sO),
-      published: null
+      published: moment(result['field_published']).format('Do MMMM YYYY')
     };
   }
 

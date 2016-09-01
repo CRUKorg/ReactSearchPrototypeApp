@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import {
   SearchkitManager,
   SearchkitProvider,
-  SearchBox,
   Hits,
   SearchkitComponent,
   Pagination,
@@ -24,8 +23,11 @@ import './components/common/styles/common.scss';
 /**
  * Import the components.
  */
+import CRUKSearchInput from './components/input/src/Input.jsx';
+import CRUKLoading from './components/loading/src/Loading.jsx';
 import CRUKSearchSummary from './components/summary/src/Summary.jsx';
 import CRUKSearchResult from './components/result/src/Result.jsx';
+//import CRUKPaging from './components/paging/src/Paging.jsx';
 
 /*const ULList = (props) => (
   <ul className="search-results">
@@ -46,7 +48,7 @@ ReactDOM.render(
       <div className="row">
         <div className="col-xs-12 col-sm-8 col-sm-push-2">
 
-          <SearchBox
+          <CRUKSearchInput
             queryBuilder={MultiMatchQuery}
             queryOptions={{
               analyzer:'cruk_standard',
@@ -63,6 +65,8 @@ ReactDOM.render(
 
           <CRUKSearchSummary/>
 
+          <CRUKLoading/>
+
           <Hits
             hitsPerPage={10}
             itemComponent={CRUKSearchResult}
@@ -71,7 +75,15 @@ ReactDOM.render(
 
           <NoHits/>
 
-          <Pagination showNumbers={true}/>
+          <Pagination
+            showNumbers={true}
+            pageScope={1}
+            //listComponent={}
+            /*translations={{
+              'pagination': {
+                previous: 'Prev'
+              }
+            }}*/ />
 
         </div>
       </div>

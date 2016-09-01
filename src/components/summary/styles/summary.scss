@@ -1,4 +1,9 @@
 
+@import "./../../common/styles/common";
+
 .search-summary {
+  @extend .alert;
+
   margin: 20px 0;
+  padding: 0 2px;
 }

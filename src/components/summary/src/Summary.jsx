@@ -23,7 +23,7 @@ const customHitStats = (props) => {
   }
 
   return (
-    <div className="search-summary alert" role="alert">
+    <div className="search-summary" role="alert">
       <div className={bemBlocks.container("info")} data-qa="info">
         Found {hitsCount} results!
       </div>
@@ -36,6 +36,8 @@ const customHitStats = (props) => {
  */
 export default class CRUKSearchSummary extends SearchkitComponent {
   render() {
-    return <HitsStats component={customHitStats} />
+    return <HitsStats
+      mod="search-summary"
+      component={customHitStats} />
   }
 }

@@ -42,10 +42,11 @@ module.exports = {
       },
       {
         test: /\.scss$/,
+        exclude: [path.resolve('./node_modules/searchkit/release/theme.css')],
         loaders: ["style", "css", "sass"]
       },
       {
-        test: /\.(jpg|png|svg)$/,
+        test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
         loaders: [
             'file-loader?name=[path][name].[ext]'
         ]
@@ -53,6 +54,10 @@ module.exports = {
       {
         test: /\.json$/,
         loader: 'json'
+      },
+      {
+        test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
+        loader: 'url-loader?limit=30000&name=[name]-[hash].[ext]'
       }
     ]
   }
