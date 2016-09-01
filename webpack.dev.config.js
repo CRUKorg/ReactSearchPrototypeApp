@@ -12,7 +12,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/static'
+    publicPath: '/static/'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -41,24 +41,27 @@ module.exports = {
         }
       },
       {
+        test: /\.css$/,
+        exclude: [path.resolve('./node_modules/searchkit/release/theme.css')],
+        loaders: ["css"]
+      },
+      {
         test: /\.scss$/,
         exclude: [path.resolve('./node_modules/searchkit/release/theme.css')],
         loaders: ["style", "css", "sass"]
       },
       {
         test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
-        loaders: [
-            'file-loader?name=[path][name].[ext]'
-        ]
+        loaders: ['file']
       },
       {
         test: /\.json$/,
         loader: 'json'
-      },
+      }/*,
       {
         test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
         loader: 'url-loader?limit=30000&name=[name]-[hash].[ext]'
-      }
+      }*/
     ]
   }
 };

@@ -10,7 +10,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/static'
+    publicPath: '/static/'
   },
   plugins: [
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
@@ -69,18 +69,12 @@ module.exports = {
         loader: ExtractTextPlugin.extract('css!sass')
       },
       {
-        test: /\.(jpg|png|svg)$/,
-        loaders: [
-            'file-loader?name=[path][name].[ext]'
-        ]
+        test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
+        loaders: ['file']
       },
       {
         test: /\.json$/,
         loader: 'json'
-      },
-      {
-        test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
-        loader: 'url-loader?limit=30000&name=[name]-[hash].[ext]'
       }
     ]
   }
