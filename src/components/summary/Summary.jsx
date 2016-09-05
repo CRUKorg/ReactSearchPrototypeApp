@@ -4,11 +4,6 @@ import {
   HitsStats
 } from "searchkit";
 
-/**
- * Import styling.
- */
-import './../styles/summary.scss';
-
 const CRUKHitsStatsDisplay = (props:HitsStatsDisplayProps) => {
   const {resultsFoundLabel, bemBlocks} = props
 

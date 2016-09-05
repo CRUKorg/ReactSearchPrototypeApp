@@ -1,6 +1,4 @@
 
-@import "./../../common/styles/common";
-
 .spinner {
   margin: 30px auto;
   width: 70px;
@@ -8,6 +6,7 @@
 }
 
 .spinner > div {
+  margin: 0 2px;
   width: 16px;
   height: 16px;
   background-color: $brand-primary;

@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import {
   SearchkitManager,
   SearchkitProvider,
-  Hits,
   SearchkitComponent,
   Pagination,
   MultiMatchQuery,
@@ -23,20 +22,11 @@ import './components/common/styles/common.scss';
 /**
  * Import the components.
  */
-import CRUKSearchInput from './components/input/src/Input.jsx';
-import CRUKLoading from './components/loading/src/Loading.jsx';
-import CRUKSearchSummary from './components/summary/src/Summary.jsx';
-import CRUKSearchResult from './components/result/src/Result.jsx';
-//import CRUKPaging from './components/paging/src/Paging.jsx';
-
-/*const ULList = (props) => (
-  <ul className="search-results">
-    {map(hits, hit => (
-      <li>
-    ))}
-  </ul>
-)*/
-
+import CRUKSearchInput from './components/input/Input.jsx';
+import CRUKLoading from './components/loading/Loading.jsx';
+import CRUKSearchSummary from './components/summary/Summary.jsx';
+import CRUKSearchHits from './components/hits/Hits.jsx'
+import CRUKPagination from './components/pagination/Pagination.jsx';
 
 /**
  * Render out the app to the "#root" element, which is the default one from the
@@ -67,23 +57,20 @@ ReactDOM.render(
 
           <CRUKLoading/>
 
-          <Hits
-            hitsPerPage={10}
-            itemComponent={CRUKSearchResult}
-            sourceFilter={['title', 'body:value', 'field_url:url', 'field_type', 'field_published']}
-            mod="search-results" />
+          <CRUKSearchHits
+            sourceFilter={['title', 'field_url:url', 'field_type', 'field_published']}
+            CRUKHighlightFields={[
+              {
+                'field': 'body:value',
+                'number_of_fragments': 0,
+                'pre_tags': ['<strong>'],
+                'post_tags': ['</strong>']
+              }
+            ]} />
 
           <NoHits/>
 
-          <Pagination
-            showNumbers={true}
-            pageScope={1}
-            //listComponent={}
-            /*translations={{
-              'pagination': {
-                previous: 'Prev'
-              }
-            }}*/ />
+          <CRUKPagination />
 
         </div>
       </div>

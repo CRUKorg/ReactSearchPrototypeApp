@@ -4,11 +4,6 @@ import {
 } from "searchkit";
 
 /**
- * Import styling.
- */
-import './../styles/input.scss';
-
-/**
  * Override the render method on the SearchBox component to alter the markup.
  */
 export default class CRUKSearchInput extends SearchBox {

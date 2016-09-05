@@ -4,11 +4,6 @@ import {
 } from "searchkit";
 
 /**
- * Import the styling.
- */
-import './../styles/loading.scss';
-
-/**
  * And the component.
  */
 export default class CRUKLoading extends SearchkitComponent {

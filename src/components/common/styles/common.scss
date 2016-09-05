@@ -67,6 +67,17 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 @import "~cruk-pattern-library/assets/scss/partials/navbar";
 @import "~cruk-pattern-library/assets/scss/partials/pattern-library";
 
+/**
+ * App specific stuff.
+ */
+
+@import './mixins';
+@import './../../input/input';
+@import './../../loading/loading';
+@import './../../pagination/pagination';
+@import './../../result/result';
+@import './../../summary/summary';
+
 body {
   padding: 20px 0;
 }
