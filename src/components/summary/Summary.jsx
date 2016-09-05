@@ -53,6 +53,11 @@ export default class CRUKSearchSummary extends HitsStats {
   render() {
     const timeTaken = this.searchkit.getTime()
     const hitsCount = this.searchkit.getHitsCount()
+
+    if (hitsCount < 1) {
+      return null;
+    }
+
     const props:HitsStatsDisplayProps = {
       bemBlocks: this.bemBlocks,
       translate: this.translate,

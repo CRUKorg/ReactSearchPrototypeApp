@@ -27,6 +27,7 @@ import CRUKLoading from './components/loading/Loading.jsx';
 import CRUKSearchSummary from './components/summary/Summary.jsx';
 import CRUKSearchHits from './components/hits/Hits.jsx'
 import CRUKPagination from './components/pagination/Pagination.jsx';
+import CRUKSearchNoResultsDisplay from './components/noresults/NoResults.jsx'
 
 /**
  * Render out the app to the "#root" element, which is the default one from the
@@ -68,9 +69,17 @@ ReactDOM.render(
               }
             ]} />
 
-          <NoHits/>
+          <NoHits
+            component={CRUKSearchNoResultsDisplay}
+            translations={{
+              "NoHits.NoResultsFound":"No movies found were found for {query}",
+              "NoHits.DidYouMean":"Search for {suggestion}",
+              "NoHits.SearchWithoutFilters":"Search for {query} without filters"
+            }}
+            suggestionsField="title"
+            mod="search-failed" />
 
-          <CRUKPagination />
+          <CRUKPagination/>
 
         </div>
       </div>
