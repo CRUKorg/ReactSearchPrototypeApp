@@ -42,8 +42,7 @@ ReactDOM.render(
           <CRUKSearchInput
             queryBuilder={MultiMatchQuery}
             queryOptions={{
-              analyzer:'cruk_standard',
-              fuzziness: 'AUTO'
+              analyzer:'cruk_standard'
             }}
             queryFields={['title^1.5', 'body:value']}
             placeholder='Search...'/>
@@ -72,7 +71,6 @@ ReactDOM.render(
           <NoHits
             component={CRUKSearchNoResultsDisplay}
             translations={{
-              "NoHits.NoResultsFound":"No movies found were found for {query}",
               "NoHits.DidYouMean":"Search for {suggestion}",
               "NoHits.SearchWithoutFilters":"Search for {query} without filters"
             }}
