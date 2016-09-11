@@ -1,0 +1,10 @@
+
+.search-interface {
+  &.search-interface--loading {
+    .search-summary,
+    .search-results,
+    ul.pager {
+      opacity: 0.4;
+    }
+  }
+}
