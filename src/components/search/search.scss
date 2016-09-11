@@ -1,5 +1,7 @@
 
 .search-interface {
+  position: relative;
+
   &.search-interface--loading {
     .search-summary,
     .search-results,

@@ -1,6 +1,13 @@
 
+.search-loading {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -35px;
+}
+
 .spinner {
-  margin: 30px auto;
+  margin: 22px auto;
   width: 70px;
   text-align: center;
 }

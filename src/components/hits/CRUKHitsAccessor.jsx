@@ -11,7 +11,7 @@ export default class CRUKHitsAccessor extends HitsAccessor {
         scrollToElement(this.getScrollSelector(), {
           offset: 0,
           ease: 'linear',
-          duration: 500
+          duration: 250
         });
       }
     }
