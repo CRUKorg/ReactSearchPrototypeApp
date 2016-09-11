@@ -7,6 +7,18 @@ import {
  * Override the render method on the SearchBox component to alter the markup.
  */
 export default class CRUKSearchInput extends SearchBox {
+  onSubmit(event) {
+    event.preventDefault()
+    this.searchQuery(this.getValue())
+
+    /**
+     * De-focus the input.
+     */
+    if (document.activeElement != document.body) {
+      document.activeElement.blur();
+    }
+  }
+
   render() {
     let wrapper_class = 'cr-input-group cr-input-group--lg cr-search-input'
     let placeholder = this.props.placeholder || this.translate('searchbox.placeholder')
