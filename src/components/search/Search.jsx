@@ -48,7 +48,7 @@ export default class CRUKSearch extends SearchkitComponent {
               "NoHits.DidYouMean":"Search for {suggestion}",
               "NoHits.SearchWithoutFilters":"Search for {query} without filters"
             }}
-            suggestionsField="title"
+            suggestionsField="body:value"
             mod="search-failed" />
 
           <CRUKPagination/>
