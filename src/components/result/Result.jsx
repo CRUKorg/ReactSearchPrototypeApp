@@ -19,7 +19,7 @@ export default class CRUKSearchResult extends React.Component {
      * If an empty search happens, then highlight won't be populated, account
      * for this.
      */
-    let resultDescription = typeof props.result.highlight != 'undefined' ? props.result.highlight['body:value'][0] : '';
+    let resultDescription = typeof props.result.highlight != 'undefined' ? props.result.highlight['body:value'][0] : result['body:value'];
 
     this.state = {
       url: result['field_url:url'],
