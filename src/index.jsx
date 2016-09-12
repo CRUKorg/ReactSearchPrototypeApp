@@ -39,7 +39,7 @@ ReactDOM.render(
             queryOptions={{
               analyzer:'cruk_standard'
             }}
-            queryFields={['title^1.5', 'body:value']}
+            queryFields={['title', 'body:value^1.5']}
             placeholder='Search...'/>
 
         </div>
