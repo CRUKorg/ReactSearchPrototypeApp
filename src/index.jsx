@@ -9,7 +9,7 @@ import {
 /**
  * Setup vars.
  */
-const sk = new SearchkitManager('https://spp.dev.cruk.org/news__dev/')
+const sk = new SearchkitManager('https://spp.dev.cruk.org/news/')
 const gtmId = 'GTM-H4B7';
 
 /**
