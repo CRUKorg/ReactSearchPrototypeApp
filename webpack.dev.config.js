@@ -20,7 +20,8 @@ module.exports = {
   ],
   resolve: {
     alias: {
-      react: path.resolve('./node_modules/react')
+      react: path.resolve('./node_modules/react'),
+      cruk_searchkit: path.resolve('./node_modules/cruk-searchkit')
     },
     extensions:[".js", ".jsx", ".webpack.js", ".web.js",""]
   },
@@ -31,12 +32,27 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-        exclude: /(node_modules)/,
+        include: [
+          path.resolve(__dirname, './node_modules/cruk-searchkit/src/components'),
+          path.resolve(__dirname, './src/index.jsx')
+        ],
         loader: 'babel',
         query: {
           presets: [
             require.resolve('babel-preset-es2015'),
             require.resolve('babel-preset-react')
+          ]
+        }
+      },
+      {
+        test: /\.js$/,
+        include: [
+          path.resolve(__dirname, './node_modules/cruk-searchkit')
+        ],
+        loader: 'babel',
+        query: {
+          presets: [
+            require.resolve('babel-preset-es2015')
           ]
         }
       },
