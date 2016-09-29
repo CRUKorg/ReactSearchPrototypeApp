@@ -20,8 +20,17 @@ import './public/scss/styles.scss';
 /**
  * Setup vars.
  */
-const sk = new SearchkitManager('https://spp.dev.cruk.org/news/')
-const gtmId = 'GTM-H4B7'; 
+
+const CRUKSearchConfig = typeof Drupal !== 'undefined' ? Drupal.settings.cruk_searchkit : {};
+
+// --------------------------------------------------------
+// When using this App in production please delete the below 2 lines. 
+CRUKSearchConfig.gtmId = 'GTM-H4B7';
+CRUKSearchConfig.hostUrl = 'https://spp.dev.cruk.org/news/';
+// --------------------------------------------------------
+
+const sk = new SearchkitManager(CRUKSearchConfig.hostUrl)
+const gtmId = CRUKSearchConfig.gtmId; 
 
 
 /**
