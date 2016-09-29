@@ -15,6 +15,8 @@ import {
   CRUKSearchGTM
 } from 'cruk_searchkit';
 
+import './public/scss/styles.scss';
+
 /**
  * Setup vars.
  */

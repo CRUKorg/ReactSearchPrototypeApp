@@ -4,7 +4,7 @@
   "description": "Example searchkit project using webpack & es6",
   "scripts": {
     "start": "node start.js",
-    "build": "rm -rf dist; webpack --config webpack.prod.config.js -p"
+    "build": "webpack --config webpack.prod.config.js -p"
   },
   "authors": [
     {
