@@ -7,22 +7,31 @@ import {
 } from 'searchkit';
 
 /**
+ * Import cruk-searchkit components ans sass.
+ */
+import {
+  CRUKSearchInput,
+  CRUKSearch,
+  CRUKSearchGTM
+} from 'cruk_searchkit';
+
+import './public/scss/styles.scss';
+
+/**
  * Setup vars.
  */
-const sk = new SearchkitManager('https://spp.dev.cruk.org/news/')
-const gtmId = 'GTM-H4B7';
 
-/**
- * Import common styling.
- */
-import './components/common/styles/common.scss';
+const CRUKSearchConfig = typeof Drupal !== 'undefined' ? Drupal.settings.cruk_searchkit : {};
 
-/**
- * Import the components.
- */
-import CRUKSearchInput from './components/input/Input.jsx';
-import CRUKSearch from './components/search/Search.jsx';
-import CRUKSearchGTM from './components/gtm/GTM.jsx';
+// --------------------------------------------------------
+// When using this App in production please delete the below 2 lines. 
+CRUKSearchConfig.gtmId = 'GTM-H4B7';
+CRUKSearchConfig.hostUrl = 'https://spp.dev.cruk.org/news/';
+// --------------------------------------------------------
+
+const sk = new SearchkitManager(CRUKSearchConfig.hostUrl)
+const gtmId = CRUKSearchConfig.gtmId; 
+
 
 /**
  * Render out the app to the "#root" element, which is the default one from the
@@ -45,7 +54,7 @@ ReactDOM.render(
         </div>
       </div>
 
-      <CRUKSearch/>
+      <CRUKSearch />
 
       <CRUKSearchGTM gtmId={gtmId} />
     </div>
