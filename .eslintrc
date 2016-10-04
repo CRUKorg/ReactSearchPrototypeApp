@@ -8,11 +8,6 @@
     "comma-dangle": 0,
     "no-unused-vars": 0
   },
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    }
-  },
   "env": {
     "browser": true
   }
