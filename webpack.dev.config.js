@@ -58,12 +58,10 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        exclude: [path.resolve('./node_modules/searchkit/release/theme.css')],
         loaders: ["css"]
       },
       {
         test: /\.scss$/,
-        exclude: [path.resolve('./node_modules/searchkit/release/theme.css')],
         loaders: ["style", "css", "sass"]
       },
       {
