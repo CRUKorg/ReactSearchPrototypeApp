@@ -3,7 +3,7 @@ node {
    * Check the code out to this box (Jenkins).
    */
   stage 'Fetch source code'
-  git url: 'https://github.com/AlliTestOrg/ReactSearchPrototypeApp.git', branch: 'master'
+  checkout scm
 
   /**
    * Install app dependencies.
@@ -21,6 +21,6 @@ node {
   finally {
     //step([$class: 'JUnitResultArchiver', testResults: 'target/*.xml'])
     //step([$class: 'ArtifactArchiver', artifacts: 'coverage/**/*', fingerprint: true])
-    step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: "allister.price@gmail.com", sendToIndividuals: true])
+    //step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: "allister.price@gmail.com", sendToIndividuals: true])
   }
 }

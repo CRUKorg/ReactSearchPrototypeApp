@@ -28,7 +28,17 @@ module.exports = {
   resolveLoader: {
     root: path.join(__dirname, "node_modules")
   },
+  eslint: {
+    configFile: './.eslintrc'
+  },
   module: {
+    preLoaders: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader'
+      }
+    ],
     loaders: [
       {
         test: /\.jsx?$/,
@@ -58,12 +68,10 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        exclude: [path.resolve('./node_modules/searchkit/release/theme.css')],
         loaders: ["css"]
       },
       {
         test: /\.scss$/,
-        exclude: [path.resolve('./node_modules/searchkit/release/theme.css')],
         loaders: ["style", "css", "sass"]
       },
       {

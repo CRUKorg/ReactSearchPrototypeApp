@@ -1,0 +1,17 @@
+{
+  "extends": "airbnb",
+  "parser": "babel-eslint",
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "comma-dangle": 0,
+    "no-unused-vars": 0
+  },
+  "env": {
+    "browser": true
+  },
+  "globals": {
+    "Drupal": true
+  }
+}
