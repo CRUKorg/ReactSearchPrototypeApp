@@ -28,7 +28,17 @@ module.exports = {
   resolveLoader: {
     root: path.join(__dirname, "node_modules")
   },
+  eslint: {
+    configFile: './.eslintrc'
+  },
   module: {
+    preLoaders: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        loader: 'eslint-loader'
+      }
+    ],
     loaders: [
       {
         test: /\.jsx?$/,

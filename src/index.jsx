@@ -13,7 +13,7 @@ import {
   CRUKSearchInput,
   CRUKSearch,
   CRUKSearchGTM
-} from 'cruk_searchkit';
+} from 'cruk-searchkit';
 
 import './public/scss/styles.scss';
 
@@ -24,13 +24,13 @@ import './public/scss/styles.scss';
 const CRUKSearchConfig = typeof Drupal !== 'undefined' ? Drupal.settings.cruk_searchkit : {};
 
 // --------------------------------------------------------
-// When using this App in production please delete the below 2 lines. 
+// When using this App in production please delete the below 2 lines.
 CRUKSearchConfig.gtmId = 'GTM-H4B7';
 CRUKSearchConfig.hostUrl = 'https://spp.dev.cruk.org/news/';
 // --------------------------------------------------------
 
-const sk = new SearchkitManager(CRUKSearchConfig.hostUrl)
-const gtmId = CRUKSearchConfig.gtmId; 
+const sk = new SearchkitManager(CRUKSearchConfig.hostUrl);
+const gtmId = CRUKSearchConfig.gtmId;
 
 
 /**
@@ -46,10 +46,11 @@ ReactDOM.render(
           <CRUKSearchInput
             queryBuilder={MultiMatchQuery}
             queryOptions={{
-              analyzer:'cruk_standard'
+              analyzer: 'cruk_standard'
             }}
             queryFields={['title', 'body:value^1.5']}
-            placeholder='Search...'/>
+            placeholder="Search..."
+          />
 
         </div>
       </div>
