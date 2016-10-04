@@ -12,9 +12,21 @@ node {
   sh 'npm install'
 
   /**
+   * Code quality check.
+   */
+  stage 'Code quality check'
+  sh 'npm run lint'
+
+  /**
+   * Run API tests.
+   */
+  stage 'API tests'
+  sh './tests/api/run-tests.sh'
+
+  /**
    * Run the tests!
    */
-  stage 'Run tests'
+  stage 'App tests'
   try {
     sh 'npm test'
   }
