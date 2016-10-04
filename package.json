@@ -1,21 +1,23 @@
 {
-  "name": "webpack-searchkit-es6-boilerplate",
+  "name": "cruk-react-news-search-prototype",
   "version": "0.1.1",
-  "description": "Example searchkit project using webpack & es6",
+  "description": "Some of this, some of that.",
   "scripts": {
     "start": "node start.js",
-    "build": "webpack --config webpack.prod.config.js -p"
+    "build": "webpack --config webpack.prod.config.js -p",
+    "lint": "eslint . --ext .js --ext .jsx"
   },
   "authors": [
     {
-      "name": "Joseph McElroy",
-      "email": "phoey1@gmail.com"
+      "name": "alli",
+      "email": "alli.price@cancer.org.uk"
     },
     {
-      "name": "Siavash Etemadieh",
-      "email": "ssetem@gmail.com"
+      "name": "Mirko!",
+      "email": "mirko.prpic@cancer.org.uk"
     }
   ],
+  "private": true,
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.14.2",
@@ -39,10 +41,17 @@
   },
   "devDependencies": {
     "babel-core": "^6.3.17",
+    "babel-eslint": "^7.0.0",
     "babel-loader": "^6.2.0",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
     "css-loader": "^0.20.2",
+    "eslint": "^3.7.1",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-loader": "^1.5.0",
+    "eslint-plugin-import": "^2.0.0",
+    "eslint-plugin-jsx-a11y": "^2.2.2",
+    "eslint-plugin-react": "^6.3.0",
     "extract-text-webpack-plugin": "^0.8.2",
     "file-loader": "^0.8.4",
     "html-webpack-plugin": "^1.7.0",
