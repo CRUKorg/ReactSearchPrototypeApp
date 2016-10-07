@@ -44,7 +44,6 @@ module.exports = {
   resolve: {
     alias: {
       react: path.resolve('./node_modules/react'),
-      cruk_searchkit: path.resolve('./node_modules/cruk-searchkit')
     },
     extensions:[".js", ".jsx", ".webpack.js", ".web.js",""]
   },
