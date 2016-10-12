@@ -26,7 +26,7 @@ const CRUKSearchConfig = typeof Drupal !== 'undefined' ? Drupal.settings.cruk_se
 // --------------------------------------------------------
 // When using this App in production please delete the below 2 lines.
 CRUKSearchConfig.gtmId = 'GTM-H4B7';
-CRUKSearchConfig.hostUrl = 'https://spp.dev.cruk.org/news/';
+CRUKSearchConfig.hostUrl = 'https://spp.dev.cruk.org/events__local_dipan/';
 // --------------------------------------------------------
 
 const sk = new SearchkitManager(CRUKSearchConfig.hostUrl);
