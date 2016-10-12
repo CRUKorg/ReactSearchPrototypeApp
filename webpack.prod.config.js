@@ -5,6 +5,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   context:path.join(__dirname),
   entry: [
+    'babel-polyfill',
     './src/index.jsx'
   ],
   output: {
@@ -61,6 +62,13 @@ module.exports = {
         ],
         loader: 'babel',
         query: {
+          plugins: [
+            "transform-class-properties",
+            "transform-es2015-object-super",
+            "transform-proto-to-assign",
+            "transform-es2015-block-scoping",
+            ["transform-es2015-classes", { "loose": true }]
+          ],
           presets: [
             require.resolve('babel-preset-es2015'),
             require.resolve('babel-preset-react')
@@ -74,6 +82,13 @@ module.exports = {
         ],
         loader: 'babel',
         query: {
+          plugins: [
+            "transform-class-properties",
+            "transform-es2015-object-super",
+            "transform-proto-to-assign",
+            "transform-es2015-block-scoping",
+            ["transform-es2015-classes", { "loose": true }]
+          ],
           presets: [
             require.resolve('babel-preset-es2015')
           ]

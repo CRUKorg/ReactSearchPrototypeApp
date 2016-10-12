@@ -7,6 +7,7 @@ module.exports = {
   context:path.join(__dirname),
   entry: [
     'webpack-hot-middleware/client?reload=true',
+    'babel-polyfill',
     './src/index.jsx'
   ],
   output: {
@@ -47,22 +48,31 @@ module.exports = {
         ],
         loader: 'babel',
         query: {
-          presets: [
-            require.resolve('babel-preset-es2015'),
-            require.resolve('babel-preset-react')
-          ]
+          plugins: [
+            "transform-class-properties",
+            "transform-es2015-object-super",
+            "transform-proto-to-assign",
+            "transform-es2015-block-scoping",
+            ["transform-es2015-classes", { "loose": true }]
+          ],
+          presets: ["react", "es2015", "stage-0"]
         }
       },
       {
         test: /\.js$/,
         include: [
-          path.resolve(__dirname, './node_modules/cruk-searchkit')
+          path.resolve(__dirname, './node_modules/cruk-searchkit/index.js')
         ],
         loader: 'babel',
         query: {
-          presets: [
-            require.resolve('babel-preset-es2015')
-          ]
+          plugins: [
+            "transform-class-properties",
+            "transform-es2015-object-super",
+            "transform-proto-to-assign",
+            "transform-es2015-block-scoping",
+            ["transform-es2015-classes", { "loose": true }]
+          ],
+          presets: ["react", "es2015", "stage-0"]
         }
       },
       {
