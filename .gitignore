@@ -3,4 +3,5 @@ node_modules
 npm-debug.log
 dist
 !dist/*.html
+!dist/embedd.js
 bower_components
