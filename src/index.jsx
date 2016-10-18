@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import {
   SearchkitManager,
   SearchkitProvider,
@@ -12,7 +13,9 @@ import {
 import {
   CRUKSearchInput,
   CRUKSearch,
-  CRUKSearchGTM
+  CRUKSearchGTM,
+  CRUKDateRange,
+  CRUKGeoSuggest
 } from 'cruk-searchkit';
 
 import './public/scss/styles.scss';
@@ -32,33 +35,78 @@ CRUKSearchConfig.hostUrl = 'https://spp.dev.cruk.org/events__local_dipan/';
 const sk = new SearchkitManager(CRUKSearchConfig.hostUrl);
 const gtmId = CRUKSearchConfig.gtmId;
 
-
 /**
- * Render out the app to the "#root" element, which is the default one from the
- * boilerplate.
+ * Override the render method on the SearchBox component to alter the markup.
  */
-ReactDOM.render(
-  <SearchkitProvider searchkit={sk}>
-    <div id="searchPrototypeApp" className="container">
-      <div className="row">
-        <div className="col-xs-12 col-sm-8 col-sm-push-2">
+export default class MainApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { bootstrapApp: false };
+    this.onClick = this.onClick.bind(this);
+    this.activateApp = this.activateApp.bind(this);
+    this.deactivateApp = this.deactivateApp.bind(this);
+  }
 
-          <CRUKSearchInput
-            queryBuilder={MultiMatchQuery}
-            queryOptions={{
-              analyzer: 'cruk_standard'
-            }}
-            queryFields={['title', 'body:value^1.5']}
-            placeholder="Search..."
-          />
+  componentWillMount() {
+    window.XSSSearchCRUK.activate = (flag) => {
+      if (flag) {
+        this.activateApp();
+      } else {
+        this.deactivateApp();
+      }
+    };
+  }
 
+  onClick() {
+    this.deactivateApp();
+  }
+
+  activateApp() {
+    this.setState({ bootstrapApp: true });
+  }
+
+  deactivateApp() {
+    this.setState({ bootstrapApp: false });
+    window.XSSSearchCRUK.unwrapAll();
+  }
+
+  render() {
+    const { bootstrapApp } = this.state;
+
+    return (
+      <SearchkitProvider searchkit={sk}>
+        <div id="searchPrototypeApp" className={!bootstrapApp ? 'container hidden' : 'container opened'}>
+          <h2><button onClick={this.onClick}>&times;</button></h2>
+          <div className="row">
+            <div className="col-xs-12 col-sm-8 col-sm-push-2">
+
+              <CRUKSearchInput
+                id="xss-q"
+                queryBuilder={MultiMatchQuery}
+                queryOptions={{
+                  analyzer: 'cruk_standard'
+                }}
+                queryFields={['title', 'body:value^1.5']}
+                placeholder="Search..."
+              />
+              <CRUKGeoSuggest
+                id="xss-location"
+                field="location"
+              />
+              <CRUKDateRange
+                id="xss-darange"
+                field="date_start"
+              />
+            </div>
+          </div>
+
+          <CRUKSearch />
+
+          <CRUKSearchGTM gtmId={gtmId} />
         </div>
-      </div>
+      </SearchkitProvider>
+    );
+  }
+}
 
-      <CRUKSearch />
-
-      <CRUKSearchGTM gtmId={gtmId} />
-    </div>
-  </SearchkitProvider>,
-  document.getElementById('root')
-);
+ReactDOM.render(<MainApp />, document.querySelector('#cruk-xss-search-wrapper'));
