@@ -10,9 +10,9 @@ import {
  * Import cruk-searchkit components ans sass.
  */
 import {
-  CRUKSearchInput,
-  CRUKSearch,
-  CRUKSearchGTM
+  CRUKSearchkitSearchBox,
+  CRUKSearchkitSearchUI,
+  CRUKSearchkitGTM,
 } from 'cruk-searchkit';
 
 import './public/scss/styles.scss';
@@ -26,7 +26,7 @@ const CRUKSearchConfig = typeof Drupal !== 'undefined' ? Drupal.settings.cruk_se
 // --------------------------------------------------------
 // When using this App in production please delete the below 2 lines.
 CRUKSearchConfig.gtmId = 'GTM-H4B7';
-CRUKSearchConfig.hostUrl = 'https://spp.dev.cruk.org/events__local_dipan/';
+CRUKSearchConfig.hostUrl = 'https://spp.dev.cruk.org/content__local_mirko/';
 // --------------------------------------------------------
 
 const sk = new SearchkitManager(CRUKSearchConfig.hostUrl);
@@ -43,7 +43,7 @@ ReactDOM.render(
       <div className="row">
         <div className="col-xs-12 col-sm-8 col-sm-push-2">
 
-          <CRUKSearchInput
+          <CRUKSearchkitSearchBox
             queryBuilder={MultiMatchQuery}
             queryOptions={{
               analyzer: 'cruk_standard'
@@ -55,9 +55,9 @@ ReactDOM.render(
         </div>
       </div>
 
-      <CRUKSearch />
+      <CRUKSearchkitSearchUI />
 
-      <CRUKSearchGTM gtmId={gtmId} />
+      <CRUKSearchkitGTM gtmId={gtmId} />
     </div>
   </SearchkitProvider>,
   document.getElementById('root')
