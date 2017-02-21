@@ -58,7 +58,6 @@ module.exports = {
         include: [
           path.resolve(__dirname, './node_modules/cruk-searchkit/src/components'),
           path.resolve(__dirname, './src/index.jsx'),
-          path.resolve(__dirname, './node_modules/searchkit'),
         ],
         loader: 'babel',
         query: {
