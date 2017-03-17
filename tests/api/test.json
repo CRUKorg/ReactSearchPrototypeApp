@@ -1,0 +1,80 @@
+swagger: '2.0'
+info:
+  title: Content Index
+  version: "1.0.0"
+host: spp.dev.cruk.org
+schemes:
+  - https
+basePath: /
+produces:
+  - application/json; charset=UTF-8
+paths:
+  /content__test/_search?size=1:
+    get:
+      summary: Perform an open search limited to one document
+      responses:
+        200:
+          description: A search response.
+          schema:
+            $ref: '#/definitions/Response'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+definitions:
+  Response:
+    type: object
+    required:
+      - hits
+    properties:
+      took:
+        type: integer
+        format: int32
+      timed_out:
+        type: boolean
+      hits:
+        $ref: '#/definitions/Results'
+  Results:
+    type: object
+    required:
+      - total
+      - hits
+    properties:
+      total:
+        type: integer
+        format: int32
+        minimum: 1
+      hits:
+        type: array
+        minItems: 1
+        items:
+          $ref: '#/definitions/Result'
+  Result:
+    type: object
+    properties:
+      _source:
+        type: object
+        required:
+          - title
+          - description
+          - body
+          - url
+        properties:
+          title:
+            type: string
+          description:
+            type: string
+          body:
+            type: string
+          url:
+            type: string
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields:
+        type: string
